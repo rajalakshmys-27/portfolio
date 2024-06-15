@@ -1,0 +1,42 @@
+/* src/components/Education.css */
+.education-section {
+  padding: 4em 1em;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2em;
+  border-left: 2px solid #f9aa33;
+  margin-top: 2em;
+}
+
+.timeline-item {
+  margin: 2em 0;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #f9aa33;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.timeline-item h3 {
+  margin: 0;
+  color: #f9aa33;
+}
+
+.timeline-item p {
+  margin: 0.5em 0;
+  color: #ffffff;
+}

@@ -1,0 +1,47 @@
+/* src/components/Home.css */
+.home-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background: linear-gradient(135deg, #030a18, #03182f);
+  color: #ffffff;
+}
+
+.home-section h1 {
+  font-size: 4em;
+  margin: 0;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.home-section h2 {
+  font-size: 2em;
+  margin: 0.5em 0;
+  animation: fadeIn 2s ease-in-out 1s;
+}
+
+.home-section a {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  border: 1px solid #f9aa33;
+  text-decoration: none;
+  color: #f9aa33;
+  transition: background 0.3s, color 0.3s;
+  animation: fadeIn 2s ease-in-out 2s;
+}
+
+.home-section a:hover {
+  background: #f9aa33;
+  color: #000000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

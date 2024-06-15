@@ -1,0 +1,29 @@
+/* src/components/Skills.css */
+.skills-section {
+  padding: 4em 1em;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+}
+
+.skill-pill {
+  background: #f9aa33;
+  color: #000000;
+  padding: 0.5em 1em;
+  border-radius: 25px;
+  font-size: 1em;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: inline-block;
+}
+
+.skill-pill:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}

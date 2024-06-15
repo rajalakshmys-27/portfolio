@@ -1,0 +1,49 @@
+/* src/components/About.css */
+.about-section {
+  padding: 4em 1em;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-container h2 {
+  margin-bottom: 1em;
+  color: #f9aa33;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  color: #ffffff;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  font-size: 1.2em;
+}
+
+.contact-item svg {
+  fill: #f9aa33;
+}
+
+.contact-item a {
+  color: #f9aa33;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-item a:hover {
+  color: #ffba45;
+}

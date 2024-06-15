@@ -1,0 +1,38 @@
+/* src/components/WorkExperience.css */
+.work-experience-section {
+  padding: 4em 1em;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 2em;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.card h3 {
+  color: #f9aa33;
+  margin-bottom: 1em;
+}
+
+.card p {
+  color: #ffffff;
+}
