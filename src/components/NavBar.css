@@ -1,5 +1,6 @@
 /* src/components/NavBar.css */
-nav {
+
+.navbar {
   background: rgba(0, 0, 0, 0.8);
   padding: 1em;
   position: fixed;
@@ -7,9 +8,57 @@ nav {
   top: 0;
   left: 0;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-nav ul {
+.menu-toggle {
+  display: none; /* Initially hide for larger screens */
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 25px;
+  height: 20px;
+  position: relative;
+}
+
+.hamburger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #f9aa33; /* Color of the hamburger lines */
+  transition: transform 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 0;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-list {
   display: flex;
   justify-content: center;
   list-style: none;
@@ -17,21 +66,79 @@ nav ul {
   padding: 0;
 }
 
-nav ul li {
-  margin: 0 1em;
+.nav-list li {
+  margin: 0 15px; /* Adjust spacing between nav items */
 }
 
-nav ul li a {
-  color: #f9aa33;
+.nav-list li a {
+  color: #ffffff; /* Text color of links */
   text-decoration: none;
-  font-size: 1.2em;
-  padding: 0.5em 1em;
-  border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  padding: 10px 15px; /* Adjust padding for better touch target */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+  cursor: pointer; /* Change cursor to pointer on hover */
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-  background-color: #f9aa33;
-  color: #000000;
+.nav-list li a:hover,
+.nav-list li a.active {
+  color: #f9aa33; /* Text color of links on hover */
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    justify-content: flex-start;
+  }
+
+  .menu-toggle {
+    display: block; /* Show hamburger menu icon for smaller screens */
+  }
+
+  .nav-list {
+    display: none; /* Hide regular nav list for smaller screens initially */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+
+  .navbar.mobile-menu-open .nav-list {
+    display: flex; /* Show mobile menu when navbar is open */
+    flex-direction: column;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-list li {
+    margin: 10px 0; /* Adjust spacing between nav items in mobile view */
+  }
+
+  .hamburger {
+    transition: transform 0.3s ease; /* Smooth transition for hamburger icon */
+  }
+
+  .hamburger.active {
+    transform: rotate(90deg); /* Rotate hamburger icon when menu is open */
+  }
+
+  .hamburger span {
+    background-color: #f9aa33; /* Color of the hamburger lines */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 }

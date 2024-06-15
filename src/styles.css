@@ -6,39 +6,6 @@ body {
   background: linear-gradient(135deg, #01071b, #0c1431);
   overflow-x: hidden;
 }
-
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 1em 2em;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  backdrop-filter: blur(10px);
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 2em;
-}
-
-nav a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1.2em;
-  transition: color 0.3s, transform 0.3s;
-}
-
-nav a:hover {
-  color: #f9aa33;
-  transform: scale(1.1);
-}
-
 section {
   padding: 6em 1em;
   max-width: 900px;

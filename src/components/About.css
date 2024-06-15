@@ -32,6 +32,9 @@
   align-items: center;
   gap: 1em;
   font-size: 1.2em;
+  @media (max-width: 768px) {
+    font-size: 1em;
+  }
 }
 
 .contact-item svg {
