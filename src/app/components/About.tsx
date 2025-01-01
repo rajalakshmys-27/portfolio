@@ -18,7 +18,7 @@ export default function About() {
           className="flex-1"
         >
           <Image
-            src="/developer.png"
+            src="/assets/developer.png"
             alt="Developer working illustration"
             width={500}
             height={500}
