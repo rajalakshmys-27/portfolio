@@ -2,14 +2,37 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function About() {
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    const handleAttributeChange = (mutations: MutationRecord[]) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes" && mutation.attributeName === "data-reload") {
+          setKey((prev) => prev + 1);
+        }
+      });
+    };
+
+    const observer = new MutationObserver(handleAttributeChange);
+    const target = document.querySelector("#about");
+    if (target) observer.observe(target, { attributes: true });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="about"
       className="min-h-screen py-20 bg-[#141414] text-white flex items-center"
+      data-reload="0"
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center">
+      <div
+        key={key}
+        className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center"
+      >
         {/* Image Section */}
         <motion.div
           initial={{ opacity: 0, x: -100 }}
@@ -35,37 +58,18 @@ export default function About() {
           className="flex-1 text-center md:text-left"
         >
           {/* Title */}
-          <motion.h2
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
-          >
-            About Me
-          </motion.h2>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-            className="text-lg md:text-xl leading-relaxed mb-6"
-          >
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
+          <p className="text-lg md:text-xl leading-relaxed mb-6">
             I&apos;m a passionate <b>MERN Stack Developer</b> with over 3+ years of
             experience building high-quality, responsive web applications. I
             specialize in React, Node.js, Express, and MongoDB, delivering
             scalable, user-centric solutions. With expertise in modern web
             technologies, I thrive on solving complex problems and crafting
             seamless digital experiences.
-          </motion.p>
+          </p>
 
           {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6 }}
-            className="flex flex-col md:flex-row gap-4 justify-center md:justify-start"
-          >
+          <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
             {/* Download Resume Button */}
             <motion.a
               href="/resume.pdf"
@@ -73,6 +77,7 @@ export default function About() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               className="inline-flex items-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md"
+              aria-label="Download Resume"
             >
               Download Resume
               <svg
@@ -102,6 +107,7 @@ export default function About() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               className="inline-flex items-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md"
+              aria-label="View Resume"
             >
               View Resume
               <svg
@@ -117,7 +123,7 @@ export default function About() {
                 />
               </svg>
             </motion.a>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
