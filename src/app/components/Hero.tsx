@@ -10,7 +10,7 @@ export default function Hero() {
     const handleAttributeChange = (mutations: MutationRecord[]) => {
       mutations.forEach((mutation) => {
         if (mutation.type === "attributes" && mutation.attributeName === "data-reload") {
-          setKey((prev) => prev + 1); // Trigger reanimation
+          setKey((prev) => prev + 1);
         }
       });
     };

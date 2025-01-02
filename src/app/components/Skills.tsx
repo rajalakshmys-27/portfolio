@@ -55,7 +55,6 @@ export default function Skills() {
                             height={80}
                             className="mb-2 object-contain"
                         />
-                        {/* <p className="text-sm md:text-base font-medium">{skill.name}</p> */}
                     </motion.div>
                 ))}
             </div>
