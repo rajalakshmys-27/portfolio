@@ -35,7 +35,7 @@ const Experiences = () => {
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 1 }}
-                    className="text-4xl font-bold mb-12"
+                    className="text-4xl md:text-5xl font-bold mb-12"
                 >
                     Experience
                 </motion.h2>
