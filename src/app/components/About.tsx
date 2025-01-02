@@ -5,24 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function About() {
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    const handleAttributeChange = (mutations: MutationRecord[]) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === "attributes" && mutation.attributeName === "data-reload") {
-          setKey((prev) => prev + 1);
-        }
-      });
-    };
-
-    const observer = new MutationObserver(handleAttributeChange);
-    const target = document.querySelector("#about");
-    if (target) observer.observe(target, { attributes: true });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="about"
@@ -30,7 +12,6 @@ export default function About() {
       data-reload="0"
     >
       <div
-        key={key}
         className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center"
       >
         {/* Image Section */}

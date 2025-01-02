@@ -4,24 +4,6 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Hero() {
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    const handleAttributeChange = (mutations: MutationRecord[]) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === "attributes" && mutation.attributeName === "data-reload") {
-          setKey((prev) => prev + 1);
-        }
-      });
-    };
-
-    const observer = new MutationObserver(handleAttributeChange);
-    const target = document.querySelector("#home");
-    if (target) observer.observe(target, { attributes: true });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
       id="home"
@@ -32,11 +14,9 @@ export default function Hero() {
       data-reload="0"
     >
       <div
-        key={key}
         className="absolute inset-0 bg-black opacity-60"
       ></div>
       <div
-        key={key + 1}
         className="relative z-10 h-full flex flex-col justify-end px-6 pb-40 md:px-12 lg:px-24"
       >
         {/* Heading */}
