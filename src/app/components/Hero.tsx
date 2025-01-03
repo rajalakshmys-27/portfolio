@@ -23,7 +23,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="md:text-8xl font-bold leading-tight"
+          className="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight"
         >
           Hi, I&apos;m
         </motion.h1>
@@ -31,7 +31,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="md:text-8xl font-bold leading-tight"
+          className="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight"
         >
           Rajalakshmy
         </motion.h1>
@@ -41,7 +41,7 @@ export default function Hero() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-4 text-lg md:text-3xl font-bold text-[#9b9b9b]"
+          className="mt-4 text-lg md:text-2xl lg:text-3xl font-bold text-[#9b9b9b]"
         >
           MERN Stack Developer | Crafting Scalable Websites
         </motion.p>

@@ -16,12 +16,21 @@ const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
 
   useEffect(() => {
+    // Check screen size
+    const updateView = () => {
+      setIsMobileView(window.innerWidth < 768);
+    };
+    updateView();
+    window.addEventListener("resize", updateView);
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      if (!isHovered) {
+      if (!isHovered && !isMobileView) {
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
           setIsVisible(false); // Hide navbar on scroll down
         } else {
@@ -33,35 +42,41 @@ const Navbar = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => {
+      window.removeEventListener("resize", updateView);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY, isHovered]);
+  }, [lastScrollY, isHovered, isMobileView]);
 
   const handleMouseEnter = () => {
-    // Clear any existing timeout and show navbar
+    if (isMobileView) return;
     if (hoverTimeout) clearTimeout(hoverTimeout);
     setIsHovered(true);
     setIsVisible(true);
   };
 
   const handleMouseLeave = () => {
-    // Set a delay before hiding the navbar
+    if (isMobileView) return;
     const timeout = setTimeout(() => {
       setIsHovered(false);
       setIsVisible(false);
-    }, 1000); // 300ms delay
+    }, 1000);
     setHoverTimeout(timeout);
   };
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <>
       {/* Invisible hover-trigger area */}
-      <div
-        className="fixed top-0 left-0 w-full h-6 z-50"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      ></div>
+      {!isMobileView && (
+        <div
+          className="fixed top-0 left-0 w-full h-6 z-50"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        ></div>
+      )}
 
       {/* Navbar */}
       <motion.nav
@@ -74,8 +89,8 @@ const Navbar = () => {
           ease: "easeInOut",
         }}
         className="fixed top-0 left-0 w-full z-40 bg-transparent backdrop-blur-md text-white"
-        onMouseEnter={handleMouseEnter} // Keep navbar visible while interacting with it
-        onMouseLeave={handleMouseLeave} // Hide with delay after leaving the navbar
+        onMouseEnter={isMobileView ? undefined : handleMouseEnter}
+        onMouseLeave={isMobileView ? undefined : handleMouseLeave}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -92,40 +107,22 @@ const Navbar = () => {
               />
             </button>
             <div className="hidden md:flex space-x-6">
-              <button
-                onClick={() => scrollToSection("#about")}
-                className="hover:text-gray-300 transition duration-300"
-              >
-                About
-              </button>
-              <button
-                onClick={() => scrollToSection("#skills")}
-                className="hover:text-gray-300 transition duration-300"
-              >
-                Skills
-              </button>
-              <button
-                onClick={() => scrollToSection("#experience")}
-                className="hover:text-gray-300 transition duration-300"
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => scrollToSection("#projects")}
-                className="hover:text-gray-300 transition duration-300"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => scrollToSection("#contact")}
-                className="hover:text-gray-300 transition duration-300"
-              >
-                Contact
-              </button>
+              {["about", "skills", "experience", "projects", "contact"].map(
+                (item) => (
+                  <button
+                    key={item}
+                    onClick={() => scrollToSection(`#${item}`)}
+                    className="hover:text-gray-300 transition duration-300"
+                  >
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </button>
+                )
+              )}
             </div>
             <div className="md:hidden">
               <button
                 type="button"
+                onClick={toggleMenu}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               >
                 <span className="sr-only">Open main menu</span>
@@ -147,6 +144,26 @@ const Navbar = () => {
               </button>
             </div>
           </div>
+          {isMenuOpen && (
+            <div className="md:hidden">
+              <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+                {["about", "skills", "experience", "projects", "contact"].map(
+                  (item) => (
+                    <button
+                      key={item}
+                      onClick={() => {
+                        scrollToSection(`#${item}`);
+                        setIsMenuOpen(false);
+                      }}
+                      className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300 hover:bg-gray-700"
+                    >
+                      {item.charAt(0).toUpperCase() + item.slice(1)}
+                    </button>
+                  )
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </motion.nav>
     </>

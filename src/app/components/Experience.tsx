@@ -24,28 +24,28 @@ const Experiences = () => {
     ];
 
     return (
-        <section id="experience" className="min-h-screen bg-black text-white py-16">
+        <section id="experience" className="bg-black text-white py-16">
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
-                className="max-w-6xl mx-auto px-4"
+                className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
             >
                 <motion.h2
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 1 }}
-                    className="text-4xl md:text-5xl font-bold mb-12"
+                    className="text-3xl md:text-5xl font-bold mb-12 text-center md:text-left"
                 >
                     Experience
                 </motion.h2>
-                <div className="flex flex-col md:flex-row items-center md:items-center gap-12">
+                <div className="flex flex-col-reverse md:flex-row items-center gap-12">
                     {/* Left Image */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.4, duration: 1 }}
-                        className="w-full md:w-1/2 flex justify-center"
+                        className="w-full md:w-1/2 flex justify-center md:justify-start"
                     >
                         <Image
                             src="/assets/experience.png"
@@ -53,6 +53,7 @@ const Experiences = () => {
                             width={500}
                             height={500}
                             className="rounded-lg"
+                            priority
                         />
                     </motion.div>
 
@@ -65,12 +66,12 @@ const Experiences = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.3, duration: 0.8 }}
-                                className="flex flex-col md:flex-row gap-4"
+                                className="flex flex-col gap-4 md:flex-row"
                             >
-                                <span className="text-lg font-semibold text-gray-400 md:w-1/3">
+                                <span className="text-base sm:text-lg font-semibold text-gray-400 md:w-1/3 text-center md:text-left">
                                     {exp.year}
                                 </span>
-                                <p className="text-base leading-relaxed md:w-2/3">
+                                <p className="text-sm sm:text-base leading-relaxed md:w-2/3 text-center md:text-left">
                                     {exp.description}
                                 </p>
                             </motion.div>

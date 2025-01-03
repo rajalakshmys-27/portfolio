@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="min-h-screen py-20 bg-[#141414] text-white flex items-center"
+      className="md:min-h-screen py-20 bg-[#141414] text-white flex items-center"
       data-reload="0"
     >
       <div

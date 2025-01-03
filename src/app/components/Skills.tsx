@@ -36,7 +36,7 @@ const skills = [
 
 export default function Skills() {
     return (
-        <section className="min-h-screen flex flex-col justify-centre skills-section bg-black text-white py-10" id="skills">
+        <section className="md:min-h-screen flex flex-col justify-centre skills-section bg-black text-white py-16" id="skills">
             <h2 className="text-center text-4xl md:text-5xl font-bold mb-8">Skills</h2>
             <div className="grid grid-cols-3 md:grid-cols-5 gap-5 px-4 md:px-10">
                 {skills.map((skill, index) => (
