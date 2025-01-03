@@ -20,7 +20,6 @@ const Navbar = () => {
   const [isMobileView, setIsMobileView] = useState(false);
 
   useEffect(() => {
-    // Check screen size
     const updateView = () => {
       setIsMobileView(window.innerWidth < 768);
     };
@@ -69,16 +68,16 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Invisible hover-trigger area */}
       {!isMobileView && (
         <div
-          className="fixed top-0 left-0 w-full h-6 z-50"
+          className={`fixed top-0 left-0 w-full h-6 z-50 ${
+            isMobileView ? "hidden" : ""
+          }`}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         ></div>
       )}
 
-      {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{
@@ -92,7 +91,7 @@ const Navbar = () => {
         onMouseEnter={isMobileView ? undefined : handleMouseEnter}
         onMouseLeave={isMobileView ? undefined : handleMouseLeave}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8">
           <div className="flex items-center justify-between h-16">
             <button
               onClick={() => scrollToSection("#home")}
@@ -146,7 +145,7 @@ const Navbar = () => {
           </div>
           {isMenuOpen && (
             <div className="md:hidden">
-              <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+              <div className="space-y-1 px-4 pt-4 pb-4 sm:px-4">
                 {["about", "skills", "experience", "projects", "contact"].map(
                   (item) => (
                     <button

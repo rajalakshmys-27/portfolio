@@ -66,7 +66,7 @@ const Projects = () => {
                 width={500}
                 height={300}
                 layout="responsive"
-                className="rounded-md object-cover w-full"
+                className="rounded-md"
               />
               <div className="mt-4 flex flex-col items-center">
                 {project.link ? (

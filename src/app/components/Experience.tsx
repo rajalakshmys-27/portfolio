@@ -35,17 +35,17 @@ const Experiences = () => {
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2, duration: 1 }}
-                    className="text-3xl md:text-5xl font-bold mb-12 text-center md:text-left"
+                    className="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 sm:mb-12 text-center md:text-left"
                 >
                     Experience
                 </motion.h2>
-                <div className="flex flex-col-reverse md:flex-row items-center gap-12">
+                <div className="flex flex-col md:flex-row items-center md:gap-12 gap-8">
                     {/* Left Image */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.4, duration: 1 }}
-                        className="w-full md:w-1/2 flex justify-center md:justify-start"
+                        className="w-2/3 md:w-1/2 flex justify-center md:justify-start"
                     >
                         <Image
                             src="/assets/experience.png"
@@ -58,7 +58,7 @@ const Experiences = () => {
                     </motion.div>
 
                     {/* Right Content */}
-                    <div className="w-full md:w-1/2 space-y-8">
+                    <div className="w-2/3 md:w-1/2 space-y-6 sm:space-y-8">
                         {experiences.map((exp, index) => (
                             <motion.div
                                 key={index}
@@ -66,12 +66,12 @@ const Experiences = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.3, duration: 0.8 }}
-                                className="flex flex-col gap-4 md:flex-row"
+                                className="flex flex-col gap-2 sm:gap-4"
                             >
-                                <span className="text-base sm:text-lg font-semibold text-gray-400 md:w-1/3 text-center md:text-left">
+                                <span className="text-sm sm:text-base font-semibold text-gray-400 text-center md:text-left">
                                     {exp.year}
                                 </span>
-                                <p className="text-sm sm:text-base leading-relaxed md:w-2/3 text-center md:text-left">
+                                <p className="text-sm sm:text-base leading-relaxed text-center md:text-left break-words">
                                     {exp.description}
                                 </p>
                             </motion.div>
