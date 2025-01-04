@@ -35,19 +35,18 @@ export default function About() {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          className="flex-1 text-center md:text-left"
+          className="flex-1 text-justify"
         >
           {/* Title */}
           <h2 className="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
-          <p className="text-lg md:text-xl leading-relaxed mb-6">
-            I&apos;m a passionate <b>MERN Stack Developer</b> with over 3+ years of
-            experience building high-quality, responsive web applications. I
-            specialize in React, Node.js, Express, and MongoDB, delivering
-            scalable, user-centric solutions. With expertise in modern web
-            technologies, I thrive on solving complex problems and crafting
-            seamless digital experiences.
+          <p>
+            I am an experienced Front-End Developer with over 3.5 years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further.
           </p>
-
+          <br/>
+          <p>
+            Adept at problem-solving, collaboration, and adaptability, I take pride in designing secure and efficient APIs using GraphQL and REST while maintaining high code quality with testing frameworks like JEST. My passion for technology drives me to deliver seamless user experiences and continually evolve as a developer.
+          </p>
+          <br/>
           {/* Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
             {/* Download Resume Button */}

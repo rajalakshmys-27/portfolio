@@ -7,78 +7,87 @@ import { motion } from "framer-motion";
 const Experiences = () => {
     const experiences = [
         {
-            year: "2021 - 2023",
+            year: "2024 - Present",
+            company: "Tata Consultancy Services",
             description:
-                "Built and maintained responsive front-end components for an e-commerce platform using React JS, LESS, and REST APIs, improving performance.",
+                "Developed full-stack applications using Node.js, Express.js, and MongoDB, integrating GraphQL APIs for efficient data retrieval. Leveraged Next.js for server-side rendering, boosting SEO and performance while ensuring secure authentication with Passport.js.",
         },
         {
             year: "2023 - 2024",
+            company: "Tata Consultancy Services",
             description:
-                "Revamped an airline booking platform using React, Redux Toolkit, Saga, TypeScript, and SCSS, enhancing user experience.",
+                "Revamped an airline booking platform using React JS, Redux Toolkit, Saga, and SCSS, enhancing user engagement. Integrated Google OAuth 2.0 Single Sign-On and multilingual support using i18next, improving accessibility and ease of use.",
         },
         {
-            year: "2024 - present",
+            year: "2021 - 2023",
+            company: "Tata Consultancy Services",
             description:
-                "Developed full-stack applications using Next JS, Node JS, Express, and MongoDB, integrating secure GraphQL APIs.",
+                "Built and maintained responsive front-end components for an e-commerce platform using React JS and LESS, increasing accessibility and improving site performance by 30%.",
         },
     ];
 
     return (
-        <section id="experience" className="bg-black text-white py-16">
-            <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
-                className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-            >
-                <motion.h2
-                    initial={{ opacity: 0, x: -50 }}
+        <section
+            id="experience"
+            className="md:min-h-screen py-20 bg-[#141414] text-white flex items-center"
+        >
+            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center">
+                {/* Heading Section */}
+                <motion.div
+                    initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2, duration: 1 }}
-                    className="text-2xl sm:text-3xl md:text-5xl font-bold mb-8 sm:mb-12 text-center md:text-left"
+                    transition={{ duration: 1 }}
+                    className="flex-1 text-justify"
                 >
-                    Experience
-                </motion.h2>
-                <div className="flex flex-col md:flex-row items-center md:gap-12 gap-8">
-                    {/* Left Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.4, duration: 1 }}
-                        className="w-2/3 md:w-1/2 flex justify-center md:justify-start"
-                    >
-                        <Image
-                            src="/assets/experience.png"
-                            alt="Experience Illustration"
-                            width={500}
-                            height={500}
-                            className="rounded-lg"
-                            priority
-                        />
-                    </motion.div>
-
-                    {/* Right Content */}
-                    <div className="w-2/3 md:w-1/2 space-y-6 sm:space-y-8">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                        Experience
+                    </h2>
+                    <div className="space-y-8">
                         {experiences.map((exp, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, x: 50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.3, duration: 0.8 }}
-                                className="flex flex-col gap-2 sm:gap-4"
+                                transition={{
+                                    delay: index * 0.3,
+                                    duration: 0.8,
+                                }}
+                                className="flex flex-col"
                             >
-                                <span className="text-sm sm:text-base font-semibold text-gray-400 text-center md:text-left">
-                                    {exp.year}
-                                </span>
-                                <p className="text-sm sm:text-base leading-relaxed text-center md:text-left break-words">
+                                <div>
+                                    <span className="text-lg font-bold text-purple-400">
+                                        {exp.year}
+                                    </span>
+                                    <span className="block text-sm text-gray-300 italic">
+                                        {exp.company}
+                                    </span>
+                                </div>
+                                <p className="text-sm sm:text-base leading-relaxed text-gray-300">
                                     {exp.description}
                                 </p>
                             </motion.div>
                         ))}
                     </div>
-                </div>
-            </motion.div>
+                </motion.div>
+
+                {/* Image Section */}
+                <motion.div
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1 }}
+                    className="flex-1"
+                >
+                    <Image
+                        src="/assets/experience.png"
+                        alt="Experience Illustration"
+                        width={500}
+                        height={500}
+                        priority
+                        className="rounded-lg shadow-lg"
+                    />
+                </motion.div>
+            </div>
         </section>
     );
 };

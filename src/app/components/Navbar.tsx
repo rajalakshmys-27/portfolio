@@ -23,8 +23,6 @@ const Navbar = () => {
     const updateView = () => {
       setIsMobileView(window.innerWidth < 768);
     };
-    updateView();
-    window.addEventListener("resize", updateView);
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -40,6 +38,8 @@ const Navbar = () => {
       setLastScrollY(currentScrollY);
     };
 
+    updateView();
+    window.addEventListener("resize", updateView);
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -68,16 +68,16 @@ const Navbar = () => {
 
   return (
     <>
+      {/* Invisible hover area for desktop */}
       {!isMobileView && (
         <div
-          className={`fixed top-0 left-0 w-full h-6 z-50 ${
-            isMobileView ? "hidden" : ""
-          }`}
+          className="fixed top-0 left-0 w-full h-6 z-50"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         ></div>
       )}
 
+      {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{
@@ -93,6 +93,7 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
           <div className="flex items-center justify-between h-16">
+            {/* Logo */}
             <button
               onClick={() => scrollToSection("#home")}
               className="cursor-pointer"
@@ -105,6 +106,8 @@ const Navbar = () => {
                 priority
               />
             </button>
+
+            {/* Desktop Links */}
             <div className="hidden md:flex space-x-6">
               {["about", "skills", "experience", "projects", "contact"].map(
                 (item) => (
@@ -118,6 +121,8 @@ const Navbar = () => {
                 )
               )}
             </div>
+
+            {/* Mobile Menu Toggle */}
             <div className="md:hidden">
               <button
                 type="button"
@@ -143,9 +148,11 @@ const Navbar = () => {
               </button>
             </div>
           </div>
+
+          {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden">
-              <div className="space-y-1 px-4 pt-4 pb-4 sm:px-4">
+              <div className="space-y-1 px-4 pt-4 pb-4">
                 {["about", "skills", "experience", "projects", "contact"].map(
                   (item) => (
                     <button
