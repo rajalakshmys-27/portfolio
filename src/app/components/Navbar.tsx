@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTheme } from "@/app/context/ThemeContext";
 
 const scrollToSection = (id: string) => {
   const section = document.querySelector(id);
@@ -18,6 +19,7 @@ const Navbar = () => {
   const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
+  const { isLightMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const updateView = () => {
@@ -68,7 +70,6 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Invisible hover area for desktop */}
       {!isMobileView && (
         <div
           className="fixed top-0 left-0 w-full h-6 z-50"
@@ -77,7 +78,6 @@ const Navbar = () => {
         ></div>
       )}
 
-      {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}
         animate={{
@@ -87,7 +87,8 @@ const Navbar = () => {
           duration: 0.4,
           ease: "easeInOut",
         }}
-        className="fixed top-0 left-0 w-full z-40 bg-transparent backdrop-blur-md text-white"
+        className={`fixed top-0 left-0 w-full z-40 ${isLightMode ? "bg-white text-black" : "bg-transparent text-white"
+          } backdrop-blur-md`}
         onMouseEnter={isMobileView ? undefined : handleMouseEnter}
         onMouseLeave={isMobileView ? undefined : handleMouseLeave}
       >
@@ -99,7 +100,7 @@ const Navbar = () => {
               className="cursor-pointer"
             >
               <Image
-                src="/assets/portfolio.png"
+                src={isLightMode ? "/assets/portfolio-dark.png" : "/assets/portfolio-light.png"}
                 alt="portfolio"
                 width={50}
                 height={50}
@@ -114,20 +115,61 @@ const Navbar = () => {
                   <button
                     key={item}
                     onClick={() => scrollToSection(`#${item}`)}
-                    className="hover:text-gray-300 transition duration-300"
+                    className="hover:text-gray-500 transition duration-300"
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
                   </button>
                 )
               )}
-            </div>
+              <button
+                onClick={toggleTheme}
+                className="flex items-center justify-center w-10 h-10 rounded-ful focus:outline-none"
+              >
+                {isLightMode ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-6 h-6"
+                  >
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
 
+
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-6 h-6"
+                  >
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                  </svg>
+                )}
+              </button>
+            </div>
             {/* Mobile Menu Toggle */}
             <div className="md:hidden">
               <button
                 type="button"
                 onClick={toggleMenu}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                className="inline-flex items-center justify-center p-2 rounded-md hover:bg-gray-700 focus:outline-none"
               >
                 <span className="sr-only">Open main menu</span>
                 <svg
@@ -161,7 +203,7 @@ const Navbar = () => {
                         scrollToSection(`#${item}`);
                         setIsMenuOpen(false);
                       }}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-gray-300 hover:bg-gray-700"
+                      className="block px-3 py-2 rounded-md text-base font-medium hover:text-gray-500 hover:bg-gray-100"
                     >
                       {item.charAt(0).toUpperCase() + item.slice(1)}
                     </button>

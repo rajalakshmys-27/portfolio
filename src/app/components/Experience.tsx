@@ -3,8 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTheme } from "@/app/context/ThemeContext";
 
 const Experiences = () => {
+    const { isLightMode } = useTheme();
+
     const experiences = [
         {
             year: "2024 - Present",
@@ -29,9 +32,9 @@ const Experiences = () => {
     return (
         <section
             id="experience"
-            className="md:min-h-screen py-20 bg-[#141414] text-white flex items-center"
+            className={`md:min-h-screen py-2 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} flex items-center`}
         >
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center gap-5 md:gap-9">
                 {/* Heading Section */}
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
@@ -59,11 +62,11 @@ const Experiences = () => {
                                     <span className="text-lg font-bold text-purple-400">
                                         {exp.year}
                                     </span>
-                                    <span className="block text-sm text-gray-300 italic">
+                                    <span className={`block text-sm ${isLightMode ? "text-gray-700" : "text-gray-300"} italic`}>
                                         {exp.company}
                                     </span>
                                 </div>
-                                <p className="text-sm sm:text-base leading-relaxed text-gray-300">
+                                <p className={`text-sm sm:text-base leading-relaxed ${isLightMode ? "text-gray-950" : "text-gray-300"} `}>
                                     {exp.description}
                                 </p>
                             </motion.div>

@@ -3,8 +3,11 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTheme } from "@/app/context/ThemeContext";
 
 const Projects = () => {
+  const { isLightMode } = useTheme();
+
   const projects = [
     {
       title: "LastMinRef - a Study Site",
@@ -30,7 +33,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="min-h-screen bg-black text-white pt-28 pb-16">
+    <section id="projects" className={`min-h-screen pt-28 pb-16 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"}`}>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -41,11 +44,11 @@ const Projects = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-300"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
         >
           Personal Projects
         </motion.h2>
-        <p className="text-gray-400 mb-12 text-base sm:text-lg">
+        <p className={`mb-12 text-base sm:text-lg ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>
           Currently developing a study site, an e-commerce platform, and a task
           management app to showcase expertise in full-stack development,
           real-time data handling, and user-centric design.
@@ -58,7 +61,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.8 }}
-              className="bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg flex flex-col justify-between"
+              className={`${isLightMode ? "bg-gray-200" : "bg-gray-800"} p-4 sm:p-6 rounded-lg shadow-lg flex flex-col justify-between`}
             >
               <Image
                 src={project.image}

@@ -2,12 +2,14 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTheme } from "@/app/context/ThemeContext";
 
 export default function About() {
+  const { isLightMode } = useTheme();
   return (
     <section
       id="about"
-      className="md:min-h-screen py-20 bg-[#141414] text-white flex items-center"
+      className={`md:min-h-screen py-20  ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} flex items-center`}
       data-reload="0"
     >
       <div
@@ -42,11 +44,11 @@ export default function About() {
           <p>
             I am an experienced Front-End Developer with over 3.5 years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further.
           </p>
-          <br/>
+          <br />
           <p>
             Adept at problem-solving, collaboration, and adaptability, I take pride in designing secure and efficient APIs using GraphQL and REST while maintaining high code quality with testing frameworks like JEST. My passion for technology drives me to deliver seamless user experiences and continually evolve as a developer.
           </p>
-          <br/>
+          <br />
           {/* Buttons */}
           <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
             {/* Download Resume Button */}
