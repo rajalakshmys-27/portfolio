@@ -167,7 +167,7 @@ const Navbar = () => {
 
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-center w-10 h-10 rounded-ful focus:outline-none"
+              className="md:hidden flex items-center justify-center w-10 h-10 rounded-ful focus:outline-none"
             >
               {isLightMode ? (
                 <svg
