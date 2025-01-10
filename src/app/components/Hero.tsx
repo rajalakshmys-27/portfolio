@@ -1,9 +1,18 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/app/context/ThemeContext";
 
 export default function Hero() {
+  const [tooltipVisible, setTooltipVisible] = useState(false);
+
   const { isLightMode } = useTheme();
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText("+919074089543");
+    setTooltipVisible(true);
+    setTimeout(() => setTooltipVisible(false), 3000); // Hide tooltip after 3 seconds
+  };
 
   return (
     <section
@@ -52,7 +61,7 @@ export default function Hero() {
           >
             {/* LinkedIn */}
             <a
-              href="https://www.linkedin.com/in/rajalakshmys27/"
+              href="https://www.linkedin.com/in/rajalakshmy-s-2709/"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center"
@@ -94,16 +103,24 @@ export default function Hero() {
             </a>
 
             {/* Phone */}
-            <a
-              href="+919074089543"
-              className="group flex items-center justify-center"
+            <div
+              className="group flex items-center justify-center relative cursor-pointer"
+              onClick={copyToClipboard}
             >
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-600 hover:bg-green-700 transition duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
                   <path fillRule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
                 </svg>
               </div>
-            </a>
+              {tooltipVisible && (
+                <div className={`absolute top-20 lg:top-1/2 lg:left-full ml-2 transform -translate-y-1/2 px-3 py-2 text-xs font-medium ${isLightMode ? "text-white bg-gray-700" : "text-black bg-gray-200"} rounded-lg shadow-lg`}>
+                  <span className="block w-full text-center">
+                    Copied to clipboard!
+                  </span>
+                </div>
+              )}
+            </div>
+
 
           </motion.div>
         </div>

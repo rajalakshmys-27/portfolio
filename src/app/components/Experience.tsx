@@ -87,7 +87,7 @@ const Experiences = () => {
                         width={500}
                         height={500}
                         priority
-                        className="rounded-lg shadow-lg"
+                        className="rounded-lg"
                     />
                 </motion.div>
             </div>

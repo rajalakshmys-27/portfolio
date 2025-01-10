@@ -44,11 +44,11 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className={`md:min-h-screen ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} py-16 px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row items-center justify-evenly gap-12`}
+      className={`md:min-h-screen ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} py-16 px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-12`}
     >
       {/* Left Section */}
       <motion.div
-        className="text-center md:text-left"
+        className="text-center md:text-left flex-1 flex flex-col gap-5 items-center"
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
@@ -72,17 +72,44 @@ const Contact = () => {
             className="rounded-lg"
           />
         </motion.div>
+        <div className="flex flex-col lg:flex-row gap-6 text-center md:text-left mt-4 md:mt-8">
+          {/* Email Address */}
+          <motion.div
+            className="flex flex-col gap-1"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
+            <p className="text-lg sm:text-xl font-semibold text-gray-400">
+              Email Address
+            </p>
+            <p className="text-sm sm:text-lg">rajalakshmys27@gmail.com</p>
+          </motion.div>
+
+          {/* Phone Number */}
+          <motion.div
+            className="flex flex-col gap-1"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9 }}
+          >
+            <p className="text-lg sm:text-xl font-semibold text-gray-400">
+              Phone Number
+            </p>
+            <p className="text-sm sm:text-lg">+91 9074089543</p>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Right Section */}
       <motion.form
-        className={`${isLightMode ? "bg-gray-200" : "bg-gray-800"} p-6 rounded-lg shadow-lg flex flex-col gap-4 w-full max-w-md`}
+        className={`${isLightMode ? "bg-gray-200" : "bg-gray-800"} p-6 rounded-lg shadow-lg flex flex-col gap-4 w-full flex-1`}
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
         onSubmit={handleSubmit}
       >
-        <h3 className={`text-2xl font-semibold mb-4 ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>Contact Us</h3>
+        <h3 className={`text-2xl font-semibold mb-4 text-center ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>Contact Me</h3>
         <input
           type="text"
           name="name"

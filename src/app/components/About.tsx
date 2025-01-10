@@ -25,10 +25,10 @@ export default function About() {
           <Image
             src="/assets/developer.png"
             alt="Developer working illustration"
-            width={500}
-            height={500}
+            width={600}
+            height={600}
             priority
-            className="rounded-lg shadow-lg"
+            className="rounded-lg"
           />
         </motion.div>
 
