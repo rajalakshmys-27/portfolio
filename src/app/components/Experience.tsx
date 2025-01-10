@@ -50,7 +50,7 @@ const Experiences = () => {
                     className="basis-3/5 relative"
                 >
                     <h3 className="text-2xl md:text-3xl font-semibold mb-6">
-                        Tata Consultancy Services (2021 - Present)
+                        Tata Consultancy Services <br className="lg:hidden"/>(2021 - Present)
                     </h3>
                     <div className="relative border-l-2 border-purple-400">
                         {experiences.map((exp, index) => (

@@ -5,19 +5,17 @@ export async function POST(req: NextRequest) {
     try {
         const { name, email, message } = await req.json();
 
-        // Configure your email transport
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: "rajalakshmys27@gmail.com", // Replace with your Gmail
-                pass: "zxoj ypyn wwne hvzz", // Replace with your Gmail app password
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS,
             },
         });
 
-        // Configure the email content
         const mailOptions = {
             from: email,
-            to: "rajalakshmys27@gmail.com", // Your email address
+            to: process.env.EMAIL_USER,
             subject: `${name} has sent a Message`,
             html: `
                 <html>
@@ -60,8 +58,6 @@ export async function POST(req: NextRequest) {
     `,
         };
 
-
-        // Send the email
         await transporter.sendMail(mailOptions);
 
         return new Response(JSON.stringify({ message: "Email sent successfully!" }), { status: 200 });
