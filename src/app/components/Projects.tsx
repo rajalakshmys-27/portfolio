@@ -33,7 +33,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className={`min-h-screen pt-28 pb-16 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"}`}>
+    <section id="projects" className={`min-h-screen py-20 lg:pt-40 lg:pb-16 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"}`}>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

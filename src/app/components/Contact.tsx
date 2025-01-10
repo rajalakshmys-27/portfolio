@@ -44,7 +44,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className={`md:min-h-screen ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} py-16 px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-12`}
+      className={`md:min-h-screen ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} py-20 px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-12`}
     >
       {/* Left Section */}
       <motion.div

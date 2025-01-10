@@ -32,7 +32,7 @@ const Experiences = () => {
     return (
         <section
             id="experience"
-            className={`md:min-h-screen py-2 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} flex items-center`}
+            className={`md:min-h-screen py-20 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} flex items-center`}
         >
             <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center gap-5 md:gap-9">
                 {/* Heading Section */}
