@@ -16,14 +16,14 @@ export async function POST(req: NextRequest) {
         const mailOptions = {
             from: email,
             to: process.env.EMAIL_USER,
-            subject: `${name} has sent a Message`,
+            subject: `${name} has sent a Message | Portfolio`,
             html: `
                 <html>
                     <body style="font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333;">
                     <table style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);">
                         <tr>
-                        <td style="text-align: center; padding-bottom: 20px;">
-                            <h2 style="color: #333; font-size: 24px; font-weight: bold;">New Message from Your Portfolio</h2>
+                        <td style="text-align: center; padding-bottom: 8px;">
+                            <h2 style="color: #333; font-size: 24px; font-weight: bold;">New Message Notification</h2>
                             <p style="font-size: 16px; color: #555;">Below are the details:</p>
                         </td>
                         </tr>
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
                         </tr>
                         <tr>
                         <td style="padding-top: 20px; text-align: center;">
-                            <p style="font-size: 14px; color: #777;">This email was sent from your portfolio contact form.</p>
+                            <p style="font-size: 14px; color: #777;">This email was sent from your <a href="https://rajalakshmy-portfolio.vercel.app/">Portfolio</a>'s Contact form.</p>
                         </td>
                         </tr>
                     </table>

@@ -12,6 +12,8 @@ const Contact = () => {
     message: "",
   });
 
+  const [modal, setModal] = useState({ isOpen: false, message: "" });
+
   const { isLightMode } = useTheme();
 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
@@ -30,15 +32,22 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert("Message sent successfully!");
+        setModal({ isOpen: true, message: "Message sent successfully!" });
         setFormData({ name: "", email: "", message: "" });
       } else {
-        alert("Failed to send the message.");
+        setModal({ isOpen: true, message: "Failed to send the message!" });
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred. Please try again.");
+      setModal({
+        isOpen: true,
+        message: "An error occurred. Please try again!",
+      });
     }
+  };
+
+  const closeModal = () => {
+    setModal({ isOpen: false, message: "" });
   };
 
   return (
@@ -143,6 +152,30 @@ const Contact = () => {
           Send Message
         </button>
       </motion.form>
+
+      {modal.isOpen && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+          onClick={closeModal}
+        >
+          <div
+            className={`${isLightMode ? "bg-white text-black" : "bg-gray-800 text-white"
+              } p-6 rounded-lg shadow-lg w-11/12 sm:w-1/2 lg:w-1/3`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-lg mb-4">{modal.message}</p>
+            <button
+              onClick={closeModal}
+              className={`${isLightMode
+                ? "bg-gray-700 hover:bg-gray-500 text-gray-300"
+                : "bg-gray-900 hover:bg-gray-500 text-gray-300"
+                } py-2 px-4 rounded focus:outline-none float-end`}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
