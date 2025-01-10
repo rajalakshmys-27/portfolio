@@ -11,7 +11,7 @@ export default function Hero() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText("+919074089543");
     setTooltipVisible(true);
-    setTimeout(() => setTooltipVisible(false), 3000); // Hide tooltip after 3 seconds
+    setTimeout(() => setTooltipVisible(false), 3000);
   };
 
   return (
@@ -22,7 +22,7 @@ export default function Hero() {
     >
       <div className="relative z-10 h-full flex flex-col md:flex-row justify-between items-center px-6 py-40 md:px-12 lg:px-20">
         {/* Left Section: Text Content */}
-        <div className="flex flex-col justify-end md:justify-center">
+        <div className="flex flex-col items-center md:items-start">
           {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, x: -50 }}
@@ -31,18 +31,8 @@ export default function Hero() {
             className={`text-3xl md:text-5xl lg:text-7xl font-bold leading-tight ${isLightMode ? "text-black" : "text-white"
               }`}
           >
-            Hi, I&apos;m
+            Hi, I&apos;m Rajalakshmy
           </motion.h1>
-          <motion.h1
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className={`text-3xl md:text-5xl lg:text-7xl font-bold leading-tight ${isLightMode ? "text-black" : "text-white"
-              }`}
-          >
-            Rajalakshmy
-          </motion.h1>
-
           {/* Subheading */}
           <motion.p
             initial={{ opacity: 0, x: -50 }}
@@ -113,7 +103,7 @@ export default function Hero() {
                 </svg>
               </div>
               {tooltipVisible && (
-                <div className={`absolute top-20 lg:top-1/2 lg:left-full ml-2 transform -translate-y-1/2 px-3 py-2 text-xs font-medium ${isLightMode ? "text-white bg-gray-700" : "text-black bg-gray-200"} rounded-lg shadow-lg`}>
+                <div className={`absolute top-20 lg:top-1/2 lg:left-full lg:ml-2 transform -translate-y-1/2 px-3 py-3 w-max text-xs font-medium ${isLightMode ? "text-white bg-gray-700" : "text-black bg-gray-200"} rounded-lg shadow-lg`}>
                   <span className="block w-full text-center">
                     Copied to clipboard!
                   </span>

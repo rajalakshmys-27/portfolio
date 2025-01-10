@@ -11,62 +11,64 @@ const Experiences = () => {
     const experiences = [
         {
             year: "2024 - Present",
-            company: "Tata Consultancy Services",
             description:
-                "Developed full-stack applications using Node.js, Express.js, and MongoDB, integrating GraphQL APIs for efficient data retrieval. Leveraged Next.js for server-side rendering, boosting SEO and performance while ensuring secure authentication with Passport.js.",
+                "Developed full-stack applications using Node.js, Express.js, MongoDB, and GraphQL. Leveraged Next.js for server-side rendering and secure authentication.",
         },
         {
             year: "2023 - 2024",
-            company: "Tata Consultancy Services",
             description:
-                "Revamped an airline booking platform using React JS, Redux Toolkit, Saga, and SCSS, enhancing user engagement. Integrated Google OAuth 2.0 Single Sign-On and multilingual support using i18next, improving accessibility and ease of use.",
+                "Revamped an airline booking platform using React JS, Redux Toolkit, and SCSS. Integrated Google OAuth 2.0 and multilingual support using i18next.",
         },
         {
             year: "2021 - 2023",
-            company: "Tata Consultancy Services",
             description:
-                "Built and maintained responsive front-end components for an e-commerce platform using React JS and LESS, increasing accessibility and improving site performance by 30%.",
+                "Built responsive front-end components for an e-commerce platform using React JS and LESS, improving performance by 30%.",
         },
     ];
 
     return (
         <section
             id="experience"
-            className={`md:min-h-screen py-20 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} flex items-center`}
+            className={`md:min-h-screen py-20 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"}`}
         >
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center gap-5 md:gap-9">
-                {/* Heading Section */}
+            {/* Heading Section */}
+            <motion.h2
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-5xl font-bold mb-12 text-center"
+            >
+                Experience
+            </motion.h2>
+            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-18 flex flex-col md:flex-row gap-5 items-center justify-between">
+
+                {/* Left Section - Timeline */}
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1 }}
-                    className="flex-1 text-justify"
+                    className="basis-3/5 relative"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                        Experience
-                    </h2>
-                    <div className="space-y-8">
+                    <h3 className="text-2xl md:text-3xl font-semibold mb-6">
+                        Tata Consultancy Services (2021 - Present)
+                    </h3>
+                    <div className="relative border-l-2 border-purple-400">
                         {experiences.map((exp, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: 50 }}
+                                initial={{ opacity: 0, x: -50 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
-                                transition={{
-                                    delay: index * 0.3,
-                                    duration: 0.8,
-                                }}
-                                className="flex flex-col"
+                                transition={{ delay: index * 0.3, duration: 0.8 }}
+                                className="mb-10 pl-8 relative"
                             >
-                                <div>
-                                    <span className="text-lg font-bold text-purple-400">
-                                        {exp.year}
-                                    </span>
-                                    <span className={`block text-sm ${isLightMode ? "text-gray-700" : "text-gray-300"} italic`}>
-                                        {exp.company}
-                                    </span>
-                                </div>
-                                <p className={`text-sm sm:text-base leading-relaxed ${isLightMode ? "text-gray-950" : "text-gray-300"} `}>
+                                <div className="absolute -left-2.5 top-0 w-4 h-4 rounded-full bg-purple-400 border-2 border-white"></div>
+                                <span className="block text-lg font-bold text-purple-400 mb-2">
+                                    {exp.year}
+                                </span>
+                                <p
+                                    className={`text-sm sm:text-base leading-relaxed ${isLightMode ? "text-gray-950" : "text-gray-300"}`}
+                                >
                                     {exp.description}
                                 </p>
                             </motion.div>
@@ -74,12 +76,12 @@ const Experiences = () => {
                     </div>
                 </motion.div>
 
-                {/* Image Section */}
+                {/* Right Section - Image */}
                 <motion.div
-                    initial={{ opacity: 0, x: 100 }}
+                    initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1 }}
-                    className="flex-1"
+                    className="basis-2/5"
                 >
                     <Image
                         src="/assets/experience.png"
