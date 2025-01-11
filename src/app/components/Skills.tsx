@@ -11,27 +11,27 @@ const skills = [
     { name: "TypeScript", iconLight: "/assets/skillicons/ts-light.png", iconDark: "/assets/skillicons/ts-dark.png" },
     { name: "React.js", iconLight: "/assets/skillicons/react-light.png", iconDark: "/assets/skillicons/react-dark.png" },
     { name: "Redux Toolkit", iconLight: "/assets/skillicons/redux-toolkit-light.png", iconDark: "/assets/skillicons/redux-toolkit-dark.png" },
-    { name: "Redux Saga", iconLight: "/assets/skillicons/redux-saga.png", iconDark: "/assets/skillicons/redux-saga.png" },
+    { name: "Redux Saga", icon: "/assets/skillicons/redux-saga.png" },
     { name: "Next.js", iconLight: "/assets/skillicons/nextjs-light.png", iconDark: "/assets/skillicons/nextjs-dark.png" },
-    { name: "Node.js", iconLight: "/assets/skillicons/nodejs.png", iconDark: "/assets/skillicons/nodejs.png" },
+    { name: "Node.js", icon: "/assets/skillicons/nodejs.png" },
     { name: "Express.js", iconLight: "/assets/skillicons/expressjs-light.png", iconDark: "/assets/skillicons/expressjs-dark.png" },
     { name: "MongoDB", iconLight: "/assets/skillicons/mongodb-light.png", iconDark: "/assets/skillicons/mongodb-dark.png" },
-    { name: "Mongoose", iconLight: "/assets/skillicons/mongoose.png", iconDark: "/assets/skillicons/mongoose.png" },
+    { name: "Mongoose", icon: "/assets/skillicons/mongoose.png" },
     { name: "RestAPI", iconLight: "/assets/skillicons/restapi-light.png", iconDark: "/assets/skillicons/restapi-dark.png" },
-    { name: "Graphql", iconLight: "/assets/skillicons/graphql.png", iconDark: "/assets/skillicons/graphql.png" },
+    { name: "Graphql", icon: "/assets/skillicons/graphql.png" },
     { name: "Git", iconLight: "/assets/skillicons/git-light.png", iconDark: "/assets/skillicons/git-dark.png" },
     { name: "GitHub", iconLight: "/assets/skillicons/github-light.png", iconDark: "/assets/skillicons/github-dark.png" },
     { name: "AWS", iconLight: "/assets/skillicons/aws-light.png", iconDark: "/assets/skillicons/aws-dark.png" },
     { name: "Jenkins", iconLight: "/assets/skillicons/jenkins-light.png", iconDark: "/assets/skillicons/jenkins-dark.png" },
     { name: "Bootstrap", iconLight: "/assets/skillicons/bootstrap-light.png", iconDark: "/assets/skillicons/bootstrap-dark.png" },
     { name: "ReactBootstrap", iconLight: "/assets/skillicons/reactbootstrap-light.png", iconDark: "/assets/skillicons/reactbootstrap-dark.png" },
-    { name: "Sass", iconLight: "/assets/skillicons/sass.png", iconDark: "/assets/skillicons/sass.png" },
-    { name: "Less", iconLight: "/assets/skillicons/less.png", iconDark: "/assets/skillicons/less.png" },
+    { name: "Sass", icon: "/assets/skillicons/sass.png" },
+    { name: "Less", icon: "/assets/skillicons/less.png" },
     { name: "Jira", iconLight: "/assets/skillicons/jira-light.png", iconDark: "/assets/skillicons/jira-dark.png" },
-    { name: "Yarn", iconLight: "/assets/skillicons/yarn.png", iconDark: "/assets/skillicons/yarn.png" },
-    { name: "Npm", iconLight: "/assets/skillicons/npm.png", iconDark: "/assets/skillicons/npm.png" },
-    { name: "EJS", iconLight: "/assets/skillicons/ejs.png", iconDark: "/assets/skillicons/ejs.png" },
-    { name: "Jest", iconLight: "/assets/skillicons/jest.png", iconDark: "/assets/skillicons/jest.png" },
+    { name: "Yarn", icon: "/assets/skillicons/yarn.png" },
+    { name: "Npm", icon: "/assets/skillicons/npm.png" },
+    { name: "EJS", icon: "/assets/skillicons/ejs.png" },
+    { name: "Jest", icon: "/assets/skillicons/jest.png" },
     { name: "RTL", iconLight: "/assets/skillicons/rtl-light.png", iconDark: "/assets/skillicons/rtl-dark.png" },
 
 ];
@@ -54,11 +54,14 @@ export default function Skills() {
                         transition={{ duration: 0.4, delay: index * 0.05 }}
                     >
                         <Image
-                            src={isLightMode ? skill.iconLight : skill.iconDark}
+                            src={skill.iconDark && !isLightMode
+                                ? skill.iconDark
+                                : skill.iconLight || skill.icon || ""}
                             alt={skill.name}
                             width={96}
                             height={96}
                             className="mb-2 object-contain"
+                            priority
                         />
                     </motion.div>
                 ))}
