@@ -68,8 +68,8 @@ const Projects = () => {
                 alt={project.title}
                 width={500}
                 height={300}
-                layout="responsive"
                 className="rounded-md"
+                style={{ width: '100%', height: 'auto' }}
               />
               <div className="mt-4 flex flex-col items-center">
                 {project.link ? (

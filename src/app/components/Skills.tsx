@@ -2,57 +2,62 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useTheme } from "@/app/context/ThemeContext";
 
 const skills = [
-    { name: "HTML", icon: "/assets/skillicons/html5.png" },
-    { name: "CSS", icon: "/assets/skillicons/css3.png" },
-    { name: "JavaScript", icon: "/assets/skillicons/javascript.png" },
-    { name: "TypeScript", icon: "/assets/skillicons/typescript.png" },
-    { name: "React", icon: "/assets/skillicons/react.png" },
-    { name: "Redux Toolkit", icon: "/assets/skillicons/redux-toolkit.png" },
-    { name: "Redux Saga", icon: "/assets/skillicons/redux-saga.png" },
-    { name: "Next.js", icon: "/assets/skillicons/nextjs.png" },
-    { name: "Node.js", icon: "/assets/skillicons/nodejs.png" },
-    { name: "Express.js", icon: "/assets/skillicons/express.png" },
-    { name: "MongoDB", icon: "/assets/skillicons/mongodb.png" },
-    { name: "Mongoose", icon: "/assets/skillicons/mongoose.png" },
-    { name: "REST API", icon: "/assets/skillicons/rest-api.png" },
-    { name: "GraphQL", icon: "/assets/skillicons/graphql.png" },
-    { name: "Git", icon: "/assets/skillicons/git.png" },
-    { name: "GitHub", icon: "/assets/skillicons/github.png" },
-    { name: "AWS", icon: "/assets/skillicons/aws.png" },
-    { name: "Jenkins", icon: "/assets/skillicons/jenkins.png" },
-    { name: "Bootstrap", icon: "/assets/skillicons/bootstrap.png" },
-    { name: "React Bootstrap", icon: "/assets/skillicons/react-bootstrap.png" },
-    { name: "Sass", icon: "/assets/skillicons/sass.png" },
-    { name: "Less", icon: "/assets/skillicons/less.png" },
-    { name: "Jira", icon: "/assets/skillicons/jira.png" },
-    { name: "Yarn", icon: "/assets/skillicons/yarn.png" },
-    { name: "npm", icon: "/assets/skillicons/npm.png" },
-    { name: "EJS", icon: "/assets/skillicons/ejs.png" },
-    { name: "Jest", icon: "/assets/skillicons/jest.png" },
-    { name: "React Testing Library", icon: "/assets/skillicons/react-testing-library.png" },
+    { name: "HTML", iconLight: "/assets/skillicons/html-light.png", iconDark: "/assets/skillicons/html-dark.png" },
+    { name: "CSS", iconLight: "/assets/skillicons/css-light.png", iconDark: "/assets/skillicons/css-dark.png" },
+    { name: "JavaScript", iconLight: "/assets/skillicons/js-light.png", iconDark: "/assets/skillicons/js-dark.png" },
+    { name: "TypeScript", iconLight: "/assets/skillicons/ts-light.png", iconDark: "/assets/skillicons/ts-dark.png" },
+    { name: "React.js", iconLight: "/assets/skillicons/react-light.png", iconDark: "/assets/skillicons/react-dark.png" },
+    { name: "Redux Toolkit", iconLight: "/assets/skillicons/redux-toolkit-light.png", iconDark: "/assets/skillicons/redux-toolkit-dark.png" },
+    { name: "Redux Saga", iconLight: "/assets/skillicons/redux-saga.png", iconDark: "/assets/skillicons/redux-saga.png" },
+    { name: "Next.js", iconLight: "/assets/skillicons/nextjs-light.png", iconDark: "/assets/skillicons/nextjs-dark.png" },
+    { name: "Node.js", iconLight: "/assets/skillicons/nodejs.png", iconDark: "/assets/skillicons/nodejs.png" },
+    { name: "Express.js", iconLight: "/assets/skillicons/expressjs-light.png", iconDark: "/assets/skillicons/expressjs-dark.png" },
+    { name: "MongoDB", iconLight: "/assets/skillicons/mongodb-light.png", iconDark: "/assets/skillicons/mongodb-dark.png" },
+    { name: "Mongoose", iconLight: "/assets/skillicons/mongoose.png", iconDark: "/assets/skillicons/mongoose.png" },
+    { name: "RestAPI", iconLight: "/assets/skillicons/restapi-light.png", iconDark: "/assets/skillicons/restapi-dark.png" },
+    { name: "Graphql", iconLight: "/assets/skillicons/graphql.png", iconDark: "/assets/skillicons/graphql.png" },
+    { name: "Git", iconLight: "/assets/skillicons/git-light.png", iconDark: "/assets/skillicons/git-dark.png" },
+    { name: "GitHub", iconLight: "/assets/skillicons/github-light.png", iconDark: "/assets/skillicons/github-dark.png" },
+    { name: "AWS", iconLight: "/assets/skillicons/aws-light.png", iconDark: "/assets/skillicons/aws-dark.png" },
+    { name: "Jenkins", iconLight: "/assets/skillicons/jenkins-light.png", iconDark: "/assets/skillicons/jenkins-dark.png" },
+    { name: "Bootstrap", iconLight: "/assets/skillicons/bootstrap-light.png", iconDark: "/assets/skillicons/bootstrap-dark.png" },
+    { name: "ReactBootstrap", iconLight: "/assets/skillicons/reactbootstrap-light.png", iconDark: "/assets/skillicons/reactbootstrap-dark.png" },
+    { name: "Sass", iconLight: "/assets/skillicons/sass.png", iconDark: "/assets/skillicons/sass.png" },
+    { name: "Less", iconLight: "/assets/skillicons/less.png", iconDark: "/assets/skillicons/less.png" },
+    { name: "Jira", iconLight: "/assets/skillicons/jira-light.png", iconDark: "/assets/skillicons/jira-dark.png" },
+    { name: "Yarn", iconLight: "/assets/skillicons/yarn.png", iconDark: "/assets/skillicons/yarn.png" },
+    { name: "Npm", iconLight: "/assets/skillicons/npm.png", iconDark: "/assets/skillicons/npm.png" },
+    { name: "EJS", iconLight: "/assets/skillicons/ejs.png", iconDark: "/assets/skillicons/ejs.png" },
+    { name: "Jest", iconLight: "/assets/skillicons/jest.png", iconDark: "/assets/skillicons/jest.png" },
+    { name: "RTL", iconLight: "/assets/skillicons/rtl-light.png", iconDark: "/assets/skillicons/rtl-dark.png" },
+
 ];
 
 export default function Skills() {
+    const { isLightMode } = useTheme();
+
     return (
-        <section className="md:min-h-screen flex flex-col justify-centre skills-section bg-black text-white py-16" id="skills">
+        <section id="skills"
+            className={`md:min-h-screen flex flex-col justify-centre skills-section py-16 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} `}>
             <h2 className="text-center text-4xl md:text-5xl font-bold mb-8">Skills</h2>
             <div className="grid grid-cols-3 md:grid-cols-5 gap-5 px-4 md:px-10">
                 {skills.map((skill, index) => (
                     <motion.div
                         key={skill.name}
-                        className="skill-card flex flex-col items-center"
+                        className="skill-card flex flex-col items-center justify-center"
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: index * 0.05 }}
                     >
                         <Image
-                            src={skill.icon}
+                            src={isLightMode ? skill.iconLight : skill.iconDark}
                             alt={skill.name}
-                            width={80}
-                            height={80}
+                            width={96}
+                            height={96}
                             className="mb-2 object-contain"
                         />
                     </motion.div>

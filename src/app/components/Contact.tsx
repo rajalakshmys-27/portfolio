@@ -74,11 +74,11 @@ const Contact = () => {
           <Image
             src="/assets/contact.png"
             alt="Contact Illustration"
-            layout="responsive"
             width={400}
             height={300}
             priority
             className="rounded-lg"
+            style={{ width: '100%', height: 'auto' }}
           />
         </motion.div>
         <div className="flex flex-col lg:flex-row gap-6 text-center md:text-left mt-4 md:mt-8">

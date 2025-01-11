@@ -16,7 +16,6 @@ const Navbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileView, setIsMobileView] = useState(false);
   const { isLightMode, toggleTheme } = useTheme();
@@ -52,18 +51,14 @@ const Navbar = () => {
 
   const handleMouseEnter = () => {
     if (isMobileView) return;
-    if (hoverTimeout) clearTimeout(hoverTimeout);
     setIsHovered(true);
     setIsVisible(true);
   };
 
   const handleMouseLeave = () => {
     if (isMobileView) return;
-    const timeout = setTimeout(() => {
-      setIsHovered(false);
-      setIsVisible(false);
-    }, 1000);
-    setHoverTimeout(timeout);
+    setIsHovered(false);
+    setIsVisible(false);
   };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
