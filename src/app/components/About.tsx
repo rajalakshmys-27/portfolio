@@ -82,7 +82,7 @@ export default function About() {
 
             {/* View Resume Button */}
             <motion.a
-              href="/resume.pdf"
+              href="https://docs.google.com/viewer?url=https://rajalakshmy-portfolio.vercel.app//resume.pdf&embedded=true"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}

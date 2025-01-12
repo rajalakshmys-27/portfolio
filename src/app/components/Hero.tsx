@@ -31,8 +31,22 @@ export default function Hero() {
             className={`text-3xl md:text-5xl lg:text-7xl font-bold leading-tight ${isLightMode ? "text-black" : "text-white"
               }`}
           >
-            Hi, I&apos;m Rajalakshmy
+            Hi, I&apos;m{" "}
+            <span
+              className={`text-transparent bg-clip-text ${isLightMode
+                  ? "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                  : "bg-gradient-to-r from-teal-400 via-green-400 to-lime-400"
+                }`}
+              style={{
+                textShadow: isLightMode
+                  ? "2px 2px 4px rgba(0, 0, 0, 0.2)"
+                  : "2px 2px 4px rgba(255, 255, 255, 0.2)",
+              }}
+            >
+              Rajalakshmy S
+            </span>
           </motion.h1>
+
           {/* Subheading */}
           <motion.p
             initial={{ opacity: 0, x: -50 }}
