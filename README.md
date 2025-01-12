@@ -22,12 +22,6 @@ Welcome to my personal portfolio website! This platform showcases my skills, pro
 - **Tailwind CSS**: For sleek and responsive designs.
 - **Framer Motion**: For smooth animations and interactions.
 
-### **Backend**
-- **Node.js**: Scalable server-side JavaScript runtime.
-- **Express.js**: Lightweight and efficient web framework.
-- **MongoDB**: NoSQL database for storing dynamic data.
-- **Mongoose**: Object Data Modeling (ODM) for MongoDB.
-
 ---
 
 ## 🖥️ Live Demo
@@ -52,18 +46,24 @@ Check out the live version of my portfolio: [Portfolio Website](https://rajalaks
 4. **View in the Browser**:
     Open your browser and navigate to http://localhost:3000 
 
+---
+
 ## 📝 Future Enhancements
 
 - **Add more animations and interactive elements.**
 - **Optimize for SEO with Next.js.**
 - **Add multilingual support.**
 
+---
+
 ## 🤝 Contact
 Feel free to reach out to me:
 
 - **Email: rajalakshmys27@gmail.com**
-- **LinkedIn: Rajalakshmy S**
-- **GitHub: rajalakshmys-27**
+- **LinkedIn: [Rajalakshmy S](https://www.linkedin.com/in/rajalakshmy-s-2709/)**
+- **GitHub: [rajalakshmys-27](https://github.com/rajalakshmys-27)**
+
+---
 
 ## 📜 License
 - **This project is licensed under the [MIT License](LICENSE).**
