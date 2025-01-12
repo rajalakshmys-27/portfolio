@@ -34,8 +34,8 @@ Check out the live version of my portfolio: [Portfolio Website](https://rajalaks
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/rajalakshmys-27/portfolio-website.git
-   cd portfolio-website
+   git clone https://github.com/rajalakshmys-27/portfolio.git
+   cd portfolio
 
 2. **Install Dependencies:**:
     npm install
