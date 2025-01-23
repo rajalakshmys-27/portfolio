@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -83,8 +82,7 @@ const Navbar = () => {
           duration: 0.4,
           ease: "easeInOut",
         }}
-        className={`fixed top-0 left-0 w-full z-40 bg-transparent ${isLightMode ? "text-black" : "text-white"
-          } backdrop-blur-md`}
+        className={`fixed top-0 left-0 w-full z-40 bg-transparent ${isLightMode ? "text-black" : "text-white"} backdrop-blur-md`}
         onMouseEnter={isMobileView ? undefined : handleMouseEnter}
         onMouseLeave={isMobileView ? undefined : handleMouseLeave}
       >

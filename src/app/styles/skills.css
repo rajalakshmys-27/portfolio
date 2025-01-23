@@ -1,0 +1,15 @@
+.skills-section {
+    @apply flex flex-col justify-center py-16;
+}
+
+.skills-heading {
+    @apply text-center text-4xl md:text-5xl font-bold mb-8;
+}
+
+.skills-container {
+    @apply grid grid-cols-3 md:grid-cols-5 gap-5 px-4 md:px-10;
+}
+
+.skill-card {
+    @apply flex flex-col items-center justify-center;
+}

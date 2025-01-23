@@ -1,20 +1,46 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
+import clsx from "clsx";
 import Image from "next/image";
 import { useTheme } from "@/app/context/ThemeContext";
 import { DownloadIcon, PDFIcon } from "@/app/components/Icons";
+import "@/app/styles/about.css";
+import ResumeLink from "./ResumeLink";
 
 export default function About() {
   const { isLightMode } = useTheme();
+
+  const aboutText =
+  {
+    heading: "About Me",
+    content: [
+      {
+        "id": 12,
+        "text":
+          "I am an experienced Front-End Developer with over 3.5 years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further."
+      },
+      {
+        "id": 13,
+        "text":
+          "Adept at problem-solving, collaboration, and adaptability, I take pride in designing secure and efficient APIs using GraphQL and REST while maintaining high code quality with testing frameworks like JEST. My passion for technology drives me to deliver seamless user experiences and continually evolve as a developer."
+      },
+
+    ]
+  }
+    ;
   return (
     <section
       id="about"
-      className={`md:min-h-screen py-20  ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"} flex items-center`}
+      className={clsx("nav-section about-section", {
+        "light-mode-section": isLightMode,
+        "dark-mode-section": !isLightMode,
+      })}
       data-reload="0"
     >
       <div
-        className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center"
+        className="about-container"
       >
         <motion.div
           initial={{ opacity: 0, x: -100 }}
@@ -35,41 +61,30 @@ export default function About() {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          className="flex-1 text-justify"
+          className="about-heading-container"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">About Me</h2>
-          <p>
-            I am an experienced Front-End Developer with over 3.5 years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further.
-          </p>
-          <br />
-          <p>
-            Adept at problem-solving, collaboration, and adaptability, I take pride in designing secure and efficient APIs using GraphQL and REST while maintaining high code quality with testing frameworks like JEST. My passion for technology drives me to deliver seamless user experiences and continually evolve as a developer.
-          </p>
-          <br />
-          <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-            <motion.a
+          <h2 className="about-heading">{aboutText.heading}</h2>
+          {aboutText.content.map((item) => (
+            <React.Fragment key={item.id}>
+              <p>{item.text}</p>
+              <br />
+            </React.Fragment>
+          ))}
+          <div className="about-links-wrapper">
+            <ResumeLink
               href="/resume.pdf"
-              download
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md"
-              aria-label="Download Resume"
-            >
-              Download Resume
-              <DownloadIcon />
-            </motion.a>
-            <motion.a
+              label="Download Resume"
+              className="about-download-resume"
+              icon={DownloadIcon}
+              download={true}
+            />
+            <ResumeLink
               href="https://docs.google.com/gview?url=https://rajalakshmy-portfolio.vercel.app//resume.pdf&embedded=true"
-              target="_blank"
+              label="View Resume"
+              className="about-view-resume"
+              icon={PDFIcon}
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md"
-              aria-label="View Resume"
-            >
-              View Resume
-              <PDFIcon />
-            </motion.a>
+            />
           </div>
         </motion.div>
       </div>

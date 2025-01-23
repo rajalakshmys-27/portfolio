@@ -1,0 +1,27 @@
+.about-section {
+    @apply py-20 flex items-center;
+}
+
+.about-container {
+    @apply max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row items-center justify-center
+}
+
+.about-heading-container {
+    @apply flex-1 text-justify;
+}
+
+.about-heading {
+    @apply text-4xl md:text-5xl font-bold mb-6;
+}
+
+.about-links-wrapper {
+    @apply flex flex-col md:flex-row gap-4 justify-center md:justify-start;
+}
+
+.about-download-resume {
+    @apply inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md;
+}
+
+.about-view-resume {
+    @apply inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md;
+}

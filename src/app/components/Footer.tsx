@@ -7,7 +7,7 @@ const Footer = () => {
     const year = new Date().getFullYear();
 
     return (
-        <footer className={`text-center text-xs md:text-sm p-3 ${isLightMode ? 'bg-gray-700' : 'bg-[#1b1b1b] text-white'}`}>
+        <footer className={isLightMode ? 'bg-gray-700' : 'bg-[#1b1b1b] '}>
             <p>© {year} Rajalakshmy S. This website is licensed under the MIT License.</p>
         </footer>
     );

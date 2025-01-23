@@ -8,14 +8,14 @@ import Contact from "./components/Contact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="nav-section flex flex-col">
       <Navbar />
       <Hero />
-      <About/>
-      <Skills/>
-      <Experience/>
-      <Projects/>
-      <Contact/>
+      <About />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Contact />
     </main>
   );
 }

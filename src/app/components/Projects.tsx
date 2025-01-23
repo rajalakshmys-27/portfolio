@@ -2,11 +2,19 @@
 
 import React from "react";
 import Image from "next/image";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useTheme } from "@/app/context/ThemeContext";
+import "@/app/styles/projects.css";
+import { head } from "framer-motion/client";
 
 const Projects = () => {
   const { isLightMode } = useTheme();
+
+  const sectionContent = {
+    heading: "Personal Projects",
+    description: "Currently developing a study site, an e-commerce platform, and a task management app to showcase expertise in full- stack development, real-time data handling, and user-centric design."
+  }
 
   const projects = [
     {
@@ -35,28 +43,32 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className={`min-h-screen py-20 lg:pt-40 lg:pb-16 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"}`}
+      className={clsx("nav-section project-section", {
+        "light-mode-section": isLightMode,
+        "dark-mode-section": !isLightMode
+      })}
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="project-container"
       >
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
+          className="project-heading"
         >
-          Personal Projects
+          {sectionContent.heading}
         </motion.h2>
-        <p className={`mb-12 text-base sm:text-lg ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>
-          Currently developing a study site, an e-commerce platform, and a task
-          management app to showcase expertise in full-stack development,
-          real-time data handling, and user-centric design.
+        <p className={clsx("project-description", {
+          "text-gray-700": isLightMode,
+          "text-gray-300": !isLightMode
+        })}>
+          {sectionContent.description}
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="project-grid">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -64,7 +76,10 @@ const Projects = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.8 }}
-              className={`${isLightMode ? "bg-gray-200" : "bg-gray-800"} p-4 sm:p-6 rounded-lg shadow-lg flex flex-col justify-between relative`}
+              className={clsx("project-card", {
+                "bg-gray-200": isLightMode,
+                "bg-gray-800": !isLightMode
+              })}
             >
               <Image
                 src={project.image}
@@ -75,27 +90,30 @@ const Projects = () => {
                 style={{ width: '100%', height: 'auto' }}
               />
               {!project.link && project.status === "Coming Soon" && (
-                <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center rounded-lg">
-                  <span className="text-white text-xl font-semibold">{project.status}</span>
+                <div className="overlay">
+                  <span className="overlay-text">{project.status}</span>
                 </div>
               )}
-              <div className="mt-4 flex flex-col items-center relative group">
+              <div className="project-card-container group">
                 {project.link ? (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-900 text-gray-300 font-semibold text-base sm:text-lg py-2 px-4 sm:px-6 rounded-md hover:bg-gray-500 transition w-full text-center"
+                    className="project-button hover:bg-gray-500"
                   >
                     {project.title}
                   </a>
                 ) : (
-                  <button type="button" className="bg-gray-900 text-gray-300 font-semibold text-base sm:text-lg py-2 px-4 sm:px-6 rounded-md cursor-not-allowed transition w-full" disabled>
+                  <button
+                    type="button"
+                    className="project-button cursor-not-allowed"
+                    disabled>
                     {project.title}
                   </button>
                 )}
                 {project.link && (
-                  <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-gray-200 text-sm px-4 py-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                  <div className="tooltip">
                     {project.status}
                   </div>
                 )}
@@ -103,8 +121,8 @@ const Projects = () => {
             </motion.div>
           ))}
         </div>
-      </motion.div>
-    </section>
+      </motion.div >
+    </section >
   );
 };
 

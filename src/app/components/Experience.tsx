@@ -2,8 +2,10 @@
 
 import React from "react";
 import Image from "next/image";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useTheme } from "@/app/context/ThemeContext";
+import "@/app/styles/experience.css";
 
 const Experiences = () => {
     const { isLightMode } = useTheme();
@@ -32,27 +34,30 @@ const Experiences = () => {
     return (
         <section
             id="experience"
-            className={`md:min-h-screen py-20 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"}`}
+            className={clsx("nav-section py-20", {
+                "light-mode-section": isLightMode,
+                "dark-mode-section": !isLightMode,
+            })}
         >
             <motion.h2
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl md:text-5xl font-bold mb-12 text-center"
+                className="experience-heading"
             >
                 Experience
             </motion.h2>
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-18 flex flex-col md:flex-row gap-5 items-center justify-between">
+            <div className="experience-container">
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1 }}
                     className="basis-3/5 relative"
                 >
-                    <h3 className="text-2xl md:text-3xl font-semibold mb-6">
+                    <h3 className="company">
                         Tata Consultancy Services <br className="lg:hidden" />(2021 - Present)
                     </h3>
-                    <div className="relative border-l-2 border-purple-400">
+                    <div className="timeline">
                         {experiences.map((exp, index) => (
                             <motion.div
                                 key={index}
@@ -60,17 +65,21 @@ const Experiences = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.3, duration: 0.8 }}
-                                className="mb-10 pl-8 relative"
+                                className="timeline-section"
                             >
-                                <div className="absolute -left-2.5 top-0 w-4 h-4 rounded-full bg-purple-400 border-2 border-white"></div>
-                                <span className="block text-lg font-bold text-purple-400 mb-2">
+                                <div className="bulletpoint"></div>
+                                <span className="timeline-year">
                                     {exp.year} {"| "}
-                                    <span className="text-gray-500 font-semibold">
+                                    <span className="timeline-designation">
                                         {exp.designation}
                                     </span>
                                 </span>
                                 <p
-                                    className={`text-sm sm:text-base leading-relaxed ${isLightMode ? "text-gray-950" : "text-gray-300"}`}
+                                    className={clsx("experience-content",
+                                        {
+                                            "text-gray-950": isLightMode,
+                                            "text-gray-300": !isLightMode
+                                        })}
                                 >
                                     {exp.description}
                                 </p>
@@ -94,7 +103,7 @@ const Experiences = () => {
                     />
                 </motion.div>
             </div>
-        </section>
+        </section >
     );
 };
 

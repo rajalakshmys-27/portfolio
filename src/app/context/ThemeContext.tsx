@@ -2,20 +2,16 @@
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from "react";
 
-// Define the context type
 interface ThemeContextType {
     isLightMode: boolean;
     toggleTheme: () => void;
 }
 
-// Create the context
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-// Theme Provider
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [isLightMode, setIsLightMode] = useState(false);
 
-    // Function to toggle the theme
     const toggleTheme = () => {
         setIsLightMode((prev) => {
             const newMode = !prev;
@@ -54,7 +50,6 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     );
 };
 
-// Hook to use the theme context
 export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (!context) {

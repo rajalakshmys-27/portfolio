@@ -19,3 +19,35 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+footer {
+  @apply text-center text-xs md:text-sm p-3 text-white;
+}
+
+.light-mode-bg {
+  @apply bg-white;
+}
+
+.dark-mode-bg {
+  @apply bg-black;
+}
+
+.light-mode-text {
+  @apply text-black;
+}
+
+.dark-mode-text {
+  @apply text-white;
+}
+
+.nav-section {
+  @apply md:min-h-screen;
+}
+
+.light-mode-section {
+  @apply bg-white text-black;
+}
+
+.dark-mode-section {
+  @apply bg-[#141414] text-white;
+}
