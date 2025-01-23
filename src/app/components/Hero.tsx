@@ -28,7 +28,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className={`text-3xl md:text-5xl lg:text-7xl font-bold leading-tight ${isLightMode ? "text-black" : "text-white"
+            className={`text-3xl md:text-5xl xl:text-6xl lg:text-7xl font-bold leading-tight ${isLightMode ? "text-black" : "text-white"
               }`}
           >
             Hi, I&apos;m{" "}

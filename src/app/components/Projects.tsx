@@ -14,26 +14,29 @@ const Projects = () => {
       image: "/assets/studysite.png",
       description: "A study site showcasing full-stack expertise.",
       link: "https://lastminref.netlify.app/",
-      status: "Live",
+      status: "View my Progress",
     },
     {
       title: "E-commerce platform",
       image: "/assets/ecommerce.png",
       description: "An e-commerce platform focused on user experience.",
       link: null,
-      status: "Under Development",
+      status: "Coming Soon",
     },
     {
       title: "Task Management App",
       image: "/assets/taskmanagement.png",
       description: "A task management app for real-time data handling.",
       link: null,
-      status: "Under Development",
+      status: "Coming Soon",
     },
   ];
 
   return (
-    <section id="projects" className={`min-h-screen py-20 lg:pt-40 lg:pb-16 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"}`}>
+    <section
+      id="projects"
+      className={`min-h-screen py-20 lg:pt-40 lg:pb-16 ${isLightMode ? "text-black bg-[#ffffff]" : "text-white bg-[#141414]"}`}
+    >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
@@ -61,7 +64,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.8 }}
-              className={`${isLightMode ? "bg-gray-200" : "bg-gray-800"} p-4 sm:p-6 rounded-lg shadow-lg flex flex-col justify-between`}
+              className={`${isLightMode ? "bg-gray-200" : "bg-gray-800"} p-4 sm:p-6 rounded-lg shadow-lg flex flex-col justify-between relative`}
             >
               <Image
                 src={project.image}
@@ -71,7 +74,12 @@ const Projects = () => {
                 className="rounded-md"
                 style={{ width: '100%', height: 'auto' }}
               />
-              <div className="mt-4 flex flex-col items-center">
+              {!project.link && project.status === "Coming Soon" && (
+                <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center rounded-lg">
+                  <span className="text-white text-xl font-semibold">{project.status}</span>
+                </div>
+              )}
+              <div className="mt-4 flex flex-col items-center relative group">
                 {project.link ? (
                   <a
                     href={project.link}
@@ -82,13 +90,13 @@ const Projects = () => {
                     {project.title}
                   </a>
                 ) : (
-                  <div className="relative group w-full">
-                    <button className="bg-gray-900 text-gray-300 font-semibold text-base sm:text-lg py-2 px-4 sm:px-6 rounded-md cursor-pointer hover:bg-gray-500 transition w-full">
-                      {project.title}
-                    </button>
-                    <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-gray-200 text-sm px-4 py-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-                      {project.status}
-                    </div>
+                  <button className="bg-gray-900 text-gray-300 font-semibold text-base sm:text-lg py-2 px-4 sm:px-6 rounded-md cursor-not-allowed transition w-full" disabled>
+                    {project.title}
+                  </button>
+                )}
+                {project.link && (
+                  <div className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-gray-200 text-sm px-4 py-2 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                    {project.status}
                   </div>
                 )}
               </div>
