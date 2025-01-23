@@ -6,7 +6,6 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useTheme } from "@/app/context/ThemeContext";
 import "@/app/styles/projects.css";
-import { head } from "framer-motion/client";
 
 const Projects = () => {
   const { isLightMode } = useTheme();
