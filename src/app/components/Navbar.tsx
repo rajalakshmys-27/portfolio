@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTheme } from "@/app/context/ThemeContext";
+import { DarkModeIcon, LightModeIcon, MenuIcon } from "@/app/components/Icons";
 
 const scrollToSection = (id: string) => {
   const section = document.querySelector(id);
@@ -30,9 +31,9 @@ const Navbar = () => {
 
       if (!isHovered && !isMobileView) {
         if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          setIsVisible(false); // Hide navbar on scroll down
+          setIsVisible(false);
         } else {
-          setIsVisible(true); // Show navbar on scroll up
+          setIsVisible(true);
         }
       }
 
@@ -89,7 +90,6 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
             <button
               onClick={() => scrollToSection("#home")}
               className="cursor-pointer"
@@ -102,8 +102,6 @@ const Navbar = () => {
                 priority
               />
             </button>
-
-            {/* Desktop Links */}
             <div className="hidden md:flex space-x-6">
               {["about", "skills", "experience", "projects", "contact"].map(
                 (item) => (
@@ -121,41 +119,9 @@ const Navbar = () => {
                 className="flex items-center justify-center w-10 h-10 rounded-ful focus:outline-none"
               >
                 {isLightMode ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-6 h-6"
-                  >
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                  </svg>
-
-
+                  <LightModeIcon />
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-6 h-6"
-                  >
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                  </svg>
+                  <DarkModeIcon />
                 )}
               </button>
             </div>
@@ -165,41 +131,9 @@ const Navbar = () => {
               className="md:hidden flex items-center justify-center w-10 h-10 rounded-ful focus:outline-none"
             >
               {isLightMode ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-6 h-6"
-                >
-                  <circle cx="12" cy="12" r="5"></circle>
-                  <line x1="12" y1="1" x2="12" y2="3"></line>
-                  <line x1="12" y1="21" x2="12" y2="23"></line>
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                  <line x1="1" y1="12" x2="3" y2="12"></line>
-                  <line x1="21" y1="12" x2="23" y2="12"></line>
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-
-
+                <LightModeIcon />
               ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-6 h-6"
-                >
-                  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                </svg>
+                <DarkModeIcon />
               )}
             </button>
 
@@ -211,27 +145,10 @@ const Navbar = () => {
                 className="inline-flex items-center justify-center p-2 rounded-md hover:bg-gray-700 focus:outline-none"
               >
                 <span className="sr-only">Open main menu</span>
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
+                <MenuIcon />
               </button>
             </div>
           </div>
-
-
-          {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="md:hidden">
               <div className="space-y-1 px-4 pt-4 pb-4">
