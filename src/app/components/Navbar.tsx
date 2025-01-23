@@ -91,6 +91,7 @@ const Navbar = () => {
         <div className="container mx-auto px-4 sm:px-6 md:px-8">
           <div className="flex items-center justify-between h-16">
             <button
+              type="button"
               onClick={() => scrollToSection("#home")}
               className="cursor-pointer"
             >
@@ -106,6 +107,7 @@ const Navbar = () => {
               {["about", "skills", "experience", "projects", "contact"].map(
                 (item) => (
                   <button
+                    type="button"
                     key={item}
                     onClick={() => scrollToSection(`#${item}`)}
                     className="hover:text-gray-500 transition duration-300"
@@ -115,8 +117,10 @@ const Navbar = () => {
                 )
               )}
               <button
+                type="button"
                 onClick={toggleTheme}
                 className="flex items-center justify-center w-10 h-10 rounded-ful focus:outline-none"
+                aria-label={isLightMode ? "Switch to dark mode" : "Switch to light mode"}
               >
                 {isLightMode ? (
                   <LightModeIcon />
@@ -125,10 +129,11 @@ const Navbar = () => {
                 )}
               </button>
             </div>
-
             <button
+              type="button"
               onClick={toggleTheme}
               className="md:hidden flex items-center justify-center w-10 h-10 rounded-ful focus:outline-none"
+              aria-label={isLightMode ? "Switch to dark mode" : "Switch to light mode"}
             >
               {isLightMode ? (
                 <LightModeIcon />
@@ -136,13 +141,12 @@ const Navbar = () => {
                 <DarkModeIcon />
               )}
             </button>
-
-            {/* Mobile Menu Toggle */}
             <div className="md:hidden">
               <button
                 type="button"
                 onClick={toggleMenu}
                 className="inline-flex items-center justify-center p-2 rounded-md hover:bg-gray-700 focus:outline-none"
+                aria-label="Toggle main menu"
               >
                 <span className="sr-only">Open main menu</span>
                 <MenuIcon />

@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: NextRequest) {
@@ -59,10 +59,19 @@ export async function POST(req: NextRequest) {
         };
 
         await transporter.sendMail(mailOptions);
+        const response = NextResponse.json({ message: "Email sent successfully!" }, { status: 200 });
 
-        return new Response(JSON.stringify({ message: "Email sent successfully!" }), { status: 200 });
+        response.headers.set('x-content-type-options', 'nosniff');
+        response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;");
+        
+        return response;
     } catch (error) {
         console.error("Error sending email:", error);
-        return new Response(JSON.stringify({ error: "Failed to send email." }), { status: 500 });
+        const response = NextResponse.json({ error: "Failed to send email." }, { status: 500 });
+
+        response.headers.set('x-content-type-options', 'nosniff');
+        response.headers.set('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;");
+
+        return response;
     }
 }

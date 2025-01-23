@@ -90,7 +90,7 @@ const Projects = () => {
                     {project.title}
                   </a>
                 ) : (
-                  <button className="bg-gray-900 text-gray-300 font-semibold text-base sm:text-lg py-2 px-4 sm:px-6 rounded-md cursor-not-allowed transition w-full" disabled>
+                  <button type="button" className="bg-gray-900 text-gray-300 font-semibold text-base sm:text-lg py-2 px-4 sm:px-6 rounded-md cursor-not-allowed transition w-full" disabled>
                     {project.title}
                   </button>
                 )}

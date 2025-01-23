@@ -62,6 +62,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center"
+              aria-label="LinkedIn Profile"
             >
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 transition duration-300">
                 <LinkedInIcon />
@@ -72,6 +73,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center"
+              aria-label="Github Profile"
             >
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-gray-800 hover:bg-gray-700 transition duration-300">
                 <GithubIcon />
@@ -82,6 +84,7 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-center"
+              aria-label="Mail"
             >
               <div className="w-12 h-12 flex items-center justify-center rounded-full bg-red-600 hover:bg-red-700 transition duration-300">
                 <MailIcon />

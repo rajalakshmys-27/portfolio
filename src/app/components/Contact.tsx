@@ -125,6 +125,7 @@ const Contact = () => {
           placeholder="Full Name"
           value={formData.name}
           onChange={handleChange}
+          autoComplete="name"
           required
           className={`p-3 rounded ${isLightMode ? "bg-gray-300 text-black" : "bg-gray-700  text-white"} focus:outline-none`}
         />
@@ -134,6 +135,7 @@ const Contact = () => {
           placeholder="Email Address"
           value={formData.email}
           onChange={handleChange}
+          autoComplete="email"
           required
           className={`p-3 rounded ${isLightMode ? "bg-gray-300 text-black" : "bg-gray-700  text-white"} focus:outline-none`}
         />

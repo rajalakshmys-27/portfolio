@@ -52,7 +52,7 @@ export default function About() {
               download
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="inline-flex items-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md"
+              className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md"
               aria-label="Download Resume"
             >
               Download Resume
@@ -64,7 +64,7 @@ export default function About() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="inline-flex items-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md"
+              className="inline-flex items-center justify-center bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md"
               aria-label="View Resume"
             >
               View Resume
