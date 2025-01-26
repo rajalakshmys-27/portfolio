@@ -38,9 +38,11 @@ Check out the live version of my portfolio: [Portfolio Website](https://rajalaks
    cd portfolio
 
 2. **Install Dependencies:**:
+    ```bash
     npm install
 
 3. **Start the Development server**:
+    ```bash
     npm run dev
 
 4. **View in the Browser**:
