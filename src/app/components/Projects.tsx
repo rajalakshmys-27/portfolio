@@ -17,18 +17,18 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "GitMarked",
+      image: "/assets/bookmarks.png",
+      description: "A bookmark manager for organizing and sharing links.",
+      link: "https://gitmarked.vercel.app/",
+      status: "View my Progress",
+    },
+    {
       title: "LastMinRef - a Study Site",
       image: "/assets/studysite.png",
       description: "A study site showcasing full-stack expertise.",
       link: "https://lastminref.netlify.app/",
       status: "View my Progress",
-    },
-    {
-      title: "E-commerce platform",
-      image: "/assets/ecommerce.png",
-      description: "An e-commerce platform focused on user experience.",
-      link: null,
-      status: "Coming Soon",
     },
     {
       title: "Task Management App",
