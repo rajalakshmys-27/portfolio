@@ -6,6 +6,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useTheme } from "@/app/context/ThemeContext";
 import { DownloadIcon, PDFIcon } from "@/app/components/Icons";
+import { getExperienceYears } from "@/utils/getExperience";
 import "@/app/styles/about.css";
 import ResumeLink from "./ResumeLink";
 
@@ -19,7 +20,7 @@ export default function About() {
       {
         "id": 12,
         "text":
-          "I am an experienced Front-End Developer with over 3.5 years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further."
+          `I am an experienced Front-End Developer with over ${getExperienceYears()} years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further.`
       },
       {
         "id": 13,
