@@ -6,7 +6,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useTheme } from "@/app/context/ThemeContext";
 import { DownloadIcon, PDFIcon } from "@/app/components/Icons";
-import { getExperienceYears } from "@/utils/getExperience";
+import { getExperienceYears } from "@/utils/helper";
 import "@/app/styles/about.css";
 import ResumeLink from "./ResumeLink";
 
