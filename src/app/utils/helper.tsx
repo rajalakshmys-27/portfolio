@@ -2,12 +2,15 @@ export const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
 };
 
-export function getExperienceYears() {
-  const startDate = new Date("2021-07-29"); // Joining date
-  const now = new Date();
-
-  const diffInMs = now - startDate;
-  const diffInYears = diffInMs / (1000 * 60 * 60 * 24 * 365.25); // rough years incl. leap years
-
-  return diffInYears.toFixed(1); // keep 1 decimal, e.g., "3.6"
-}
+export const calculateYearsOfExperience = (startDate: string): string => {
+    if (typeof window === 'undefined') {
+        return "3.5";
+    }
+    
+    const start = new Date(startDate);
+    const today = new Date();
+    const years = today.getFullYear() - start.getFullYear();
+    const months = today.getMonth() - start.getMonth();
+    const totalYears = years + months / 12;
+    return Math.max(0, totalYears).toFixed(1);
+};

@@ -1,17 +1,25 @@
 "use client";
 
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import Image from "next/image";
 import { useTheme } from "@/app/context/ThemeContext";
 import { DownloadIcon, PDFIcon } from "@/app/components/Icons";
-import { getExperienceYears } from "@/app/utils/helper";
 import "@/app/styles/about.css";
 import ResumeLink from "./ResumeLink";
+import { calculateYearsOfExperience } from "@/app/utils/helper";
 
 export default function About() {
   const { isLightMode } = useTheme();
+
+  const careerStartDate = '2021-07-29'; // Update this to your actual start date
+  const [yearsOfExperience, setYearsOfExperience] = useState("3.5");
+
+  useEffect(() => {
+    // Update the years of experience on the client side
+    setYearsOfExperience(calculateYearsOfExperience(careerStartDate));
+  }, [careerStartDate]);
 
   const aboutText =
   {
@@ -20,7 +28,7 @@ export default function About() {
       {
         "id": 12,
         "text":
-          `I am an experienced Front-End Developer with over ${getExperienceYears()} years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further.`
+          `I am an experienced Front-End Developer with over ${yearsOfExperience} years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further.`
       },
       {
         "id": 13,
@@ -67,7 +75,14 @@ export default function About() {
           <h2 className="about-heading">{aboutText.heading}</h2>
           {aboutText.content.map((item) => (
             <React.Fragment key={item.id}>
-              <p>{item.text}</p>
+              {item.id === 12 ? (
+                <p>
+                  {/* Split static text and dynamic years into separate nodes to avoid SSR/CSR mismatch */}
+                  I am an experienced Front-End Developer with over <span suppressHydrationWarning>{yearsOfExperience}</span> years of expertise in building high-quality, responsive web applications. Proficient in modern technologies like React JS and Next JS. I have delivered impactful solutions, including revamping an airline booking platform and optimizing e-commerce platforms. My full-stack skills in MERN development and backend technologies like Node.js, Express.js, and MongoDB allow me to create scalable, user-centric applications. I am also exploring cloud technologies to enhance application performance and scalability further.
+                </p>
+              ) : (
+                <p>{item.text}</p>
+              )}
               <br />
             </React.Fragment>
           ))}
